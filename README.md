@@ -47,7 +47,7 @@ OpenSSL是一套件开放源代码的安全套接字密码学基础库，囊括�
   ```
 
   > 安装结果：
-  >
+  > - 生成二进制文件：`$HOME/.local/bin/gmtassl`；
   > - 生成标准库，所在目录`$HOME/.local/lib`，相关库文件：libtacrypto.a，libtacrypto.so，libtassl.a，libtassl.so等；
   > - 生成标准的头文件，所在目录`$HOME/.local/include/openssl`；
 
