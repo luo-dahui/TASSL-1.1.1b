@@ -752,7 +752,7 @@ static int devcrypto_unload(ENGINE *e)
     return 1;
 }
 /*
- * This engine is always built into libcrypto, so it doesn't offer any
+ * This engine is always built into libtacrypto, so it doesn't offer any
  * ability to be dynamically loadable.
  */
 void engine_load_devcrypto_int()

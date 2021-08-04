@@ -477,7 +477,7 @@ int mempacket_test_inject(BIO *bio, const char *in, int inl, int pktnum,
         /*
          * If we are duplicating the packet, we duplicate it three times. The
          * first two times we drop the first record if there are more than one.
-         * In this way we know that libssl will not be able to make progress
+         * In this way we know that libtassl will not be able to make progress
          * until it receives the last packet, and hence will be forced to
          * buffer these records.
          */

@@ -79,7 +79,7 @@ my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lx
 #               argued that the only reason to produce statically linked
 #               binaries (and in context it means executables linked with
 #               -static flag, and not just executables linked with static
-#               libcrypto.a) is to eliminate dependency on specific run-time,
+#               libtacrypto.a) is to eliminate dependency on specific run-time,
 #               a.k.a. libc version. The mentioned config options are meant
 #               to achieve just that. Unfortunately on Linux it's impossible
 #               to eliminate the dependency completely for openssl executable

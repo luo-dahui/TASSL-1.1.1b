@@ -25,8 +25,8 @@ Deprecated:
 =head1 DESCRIPTION
 
 ERR_load_crypto_strings() registers the error strings for all
-B<libcrypto> functions. SSL_load_error_strings() does the same,
-but also registers the B<libssl> error strings.
+B<libtacrypto> functions. SSL_load_error_strings() does the same,
+but also registers the B<libtassl> error strings.
 
 In versions prior to OpenSSL 1.1.0,
 ERR_free_strings() releases any resources created by the above functions.

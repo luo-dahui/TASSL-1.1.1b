@@ -8,10 +8,10 @@
          if $config{target} =~ /^vms/;
      "";
 -}
-LIBS=libcrypto libssl
-INCLUDE[libcrypto]=. crypto/include include
-INCLUDE[libssl]=. include
-DEPEND[libssl]=libcrypto
+LIBS=libtacrypto libtassl
+INCLUDE[libtacrypto]=. crypto/include include
+INCLUDE[libtassl]=. include
+DEPEND[libtassl]=libtacrypto
 
 # Empty DEPEND "indices" means the dependencies are expected to be built
 # unconditionally before anything else.
@@ -26,68 +26,68 @@ GENERATE[crypto/include/internal/dso_conf.h]=crypto/include/internal/dso_conf.h.
 
 IF[{- defined $target{shared_defflag} -}]
   IF[{- $config{target} =~ /^mingw/ -}]
-    GENERATE[libcrypto.def]=util/mkdef.pl crypto 32
-    DEPEND[libcrypto.def]=util/libcrypto.num
-    GENERATE[libssl.def]=util/mkdef.pl ssl 32
-    DEPEND[libssl.def]=util/libssl.num
+    GENERATE[libtacrypto.def]=util/mkdef.pl crypto 32
+    DEPEND[libtacrypto.def]=util/libtacrypto.num
+    GENERATE[libtassl.def]=util/mkdef.pl ssl 32
+    DEPEND[libtassl.def]=util/libtassl.num
 
-    SHARED_SOURCE[libcrypto]=libcrypto.def
-    SHARED_SOURCE[libssl]=libssl.def
+    SHARED_SOURCE[libtacrypto]=libtacrypto.def
+    SHARED_SOURCE[libtassl]=libtassl.def
   ELSIF[{- $config{target} =~ /^aix/ -}]
-    GENERATE[libcrypto.map]=util/mkdef.pl crypto aix
-    DEPEND[libcrypto.map]=util/libcrypto.num
-    GENERATE[libssl.map]=util/mkdef.pl ssl aix
-    DEPEND[libssl.map]=util/libssl.num
+    GENERATE[libtacrypto.map]=util/mkdef.pl crypto aix
+    DEPEND[libtacrypto.map]=util/libtacrypto.num
+    GENERATE[libtassl.map]=util/mkdef.pl ssl aix
+    DEPEND[libtassl.map]=util/libtassl.num
 
-    SHARED_SOURCE[libcrypto]=libcrypto.map
-    SHARED_SOURCE[libssl]=libssl.map
+    SHARED_SOURCE[libtacrypto]=libtacrypto.map
+    SHARED_SOURCE[libtassl]=libtassl.map
   ELSE
-    GENERATE[libcrypto.map]=util/mkdef.pl crypto linux
-    DEPEND[libcrypto.map]=util/libcrypto.num
-    GENERATE[libssl.map]=util/mkdef.pl ssl linux
-    DEPEND[libssl.map]=util/libssl.num
+    GENERATE[libtacrypto.map]=util/mkdef.pl crypto linux
+    DEPEND[libtacrypto.map]=util/libtacrypto.num
+    GENERATE[libtassl.map]=util/mkdef.pl ssl linux
+    DEPEND[libtassl.map]=util/libtassl.num
 
-    SHARED_SOURCE[libcrypto]=libcrypto.map
-    SHARED_SOURCE[libssl]=libssl.map
+    SHARED_SOURCE[libtacrypto]=libtacrypto.map
+    SHARED_SOURCE[libtassl]=libtassl.map
   ENDIF
 ENDIF
 # VMS and VC don't have parametrised .def / .symvec generation, so they get
 # special treatment, since we know they do use these files
 IF[{- $config{target} =~ /^VC-/ -}]
-  GENERATE[libcrypto.def]=util/mkdef.pl crypto 32
-  DEPEND[libcrypto.def]=util/libcrypto.num
-  GENERATE[libssl.def]=util/mkdef.pl ssl 32
-  DEPEND[libssl.def]=util/libssl.num
+  GENERATE[libtacrypto.def]=util/mkdef.pl crypto 32
+  DEPEND[libtacrypto.def]=util/libtacrypto.num
+  GENERATE[libtassl.def]=util/mkdef.pl ssl 32
+  DEPEND[libtassl.def]=util/libtassl.num
 
-  SHARED_SOURCE[libcrypto]=libcrypto.def
-  SHARED_SOURCE[libssl]=libssl.def
+  SHARED_SOURCE[libtacrypto]=libtacrypto.def
+  SHARED_SOURCE[libtassl]=libtassl.def
 ELSIF[{- $config{target} =~ /^vms/ -}]
-  GENERATE[libcrypto.opt]=util/mkdef.pl crypto "VMS"
-  DEPEND[libcrypto.opt]=util/libcrypto.num
-  GENERATE[libssl.opt]=util/mkdef.pl ssl "VMS"
-  DEPEND[libssl.opt]=util/libssl.num
+  GENERATE[libtacrypto.opt]=util/mkdef.pl crypto "VMS"
+  DEPEND[libtacrypto.opt]=util/libtacrypto.num
+  GENERATE[libtassl.op]=util/mkdef.pl ssl "VMS"
+  DEPEND[libtassl.op]=util/libtassl.num
 
-  SHARED_SOURCE[libcrypto]=libcrypto.opt
-  SHARED_SOURCE[libssl]=libssl.opt
+  SHARED_SOURCE[libtacrypto]=libtacrypto.opt
+  SHARED_SOURCE[libtassl]=libtassl.op
 ENDIF
 
 IF[{- $config{target} =~ /^(?:Cygwin|mingw|VC-)/ -}]
-  GENERATE[libcrypto.rc]=util/mkrc.pl libcrypto
-  GENERATE[libssl.rc]=util/mkrc.pl libssl
+  GENERATE[libtacrypto.rc]=util/mkrc.pl libtacrypto
+  GENERATE[libtassl.rc]=util/mkrc.pl libtassl
 
-  SHARED_SOURCE[libcrypto]=libcrypto.rc
-  SHARED_SOURCE[libssl]=libssl.rc
+  SHARED_SOURCE[libtacrypto]=libtacrypto.rc
+  SHARED_SOURCE[libtassl]=libtassl.rc
 ENDIF
 
 IF[{- $config{target} =~ /^Cygwin/ -}]
- SHARED_NAME[libcrypto]=cygcrypto-{- $sover_filename -}
- SHARED_NAME[libssl]=cygssl-{- $sover_filename -}
+ SHARED_NAME[libtacrypto]=cygcrypto-{- $sover_filename -}
+ SHARED_NAME[libtassl]=cygssl-{- $sover_filename -}
 ELSIF[{- $config{target} =~ /^mingw/ -}]
- SHARED_NAME[libcrypto]=libcrypto-{- $sover_filename -}{- $config{target} eq "mingw64" ? "-x64" : "" -}
- SHARED_NAME[libssl]=libssl-{- $sover_filename -}{- $config{target} eq "mingw64" ? "-x64" : "" -}
+ SHARED_NAME[libtacrypto]=libtacrypto-{- $sover_filename -}{- $config{target} eq "mingw64" ? "-x64" : "" -}
+ SHARED_NAME[libtassl]=libtassl-{- $sover_filename -}{- $config{target} eq "mingw64" ? "-x64" : "" -}
 ELSIF[{- $config{target} =~ /^VC-/ -}]
- SHARED_NAME[libcrypto]=libcrypto-{- $sover_filename -}{- $target{multilib} -}
- SHARED_NAME[libssl]=libssl-{- $sover_filename -}{- $target{multilib} -}
+ SHARED_NAME[libtacrypto]=libtacrypto-{- $sover_filename -}{- $target{multilib} -}
+ SHARED_NAME[libtassl]=libtassl-{- $sover_filename -}{- $target{multilib} -}
 ENDIF
 
 # VMS has a cultural standard where all libraries are prefixed.
@@ -96,8 +96,8 @@ ENDIF
 # Also, it seems it's usual to have the pointer size the libraries
 # were built for as part of the name.
 IF[{- $config{target} =~ /^vms/ -}]
- RENAME[libcrypto]=ossl$libcrypto{- $target{pointer_size} -}
- RENAME[libssl]=ossl$libssl{- $target{pointer_size} -}
- SHARED_NAME[libcrypto]=ossl$libcrypto{- $sover_filename -}_shr{- $target{pointer_size} -}
- SHARED_NAME[libssl]=ossl$libssl{- $sover_filename -}_shr{- $target{pointer_size} -}
+ RENAME[libtacrypto]=ossl$libtacrypto{- $target{pointer_size} -}
+ RENAME[libtassl]=ossl$libtassl{- $target{pointer_size} -}
+ SHARED_NAME[libtacrypto]=ossl$libtacrypto{- $sover_filename -}_shr{- $target{pointer_size} -}
+ SHARED_NAME[libtassl]=ossl$libtassl{- $sover_filename -}_shr{- $target{pointer_size} -}
 ENDIF

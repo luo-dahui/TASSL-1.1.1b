@@ -1,5 +1,5 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=\
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=\
         md5_dgst.c md5_one.c {- $target{md5_asm_src} -}
 
 GENERATE[md5-586.s]=asm/md5-586.pl \

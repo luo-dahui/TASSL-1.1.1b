@@ -20,7 +20,7 @@ ossl_store-file - The store 'file' scheme loader
 
 =head1 DESCRIPTION
 
-Support for the 'file' scheme is built into C<libcrypto>.
+Support for the 'file' scheme is built into C<libtacrypto>.
 Since files come in all kinds of formats and content types, the 'file'
 scheme has its own layer of functionality called "file handlers",
 which are used to try to decode diverse types of file contents.

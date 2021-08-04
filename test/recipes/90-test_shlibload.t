@@ -25,36 +25,36 @@ plan skip_all => "Test only supported in a dso build" if disabled("dso");
 
 plan tests => 10;
 
-# When libssl and libcrypto are compiled on Linux with "-rpath", but not
+# When libtassl and libtacrypto are compiled on Linux with "-rpath", but not
 # "--enable-new-dtags", the RPATH takes precedence over LD_LIBRARY_PATH,
 # and we end up running with the wrong libraries.  This is resolved by
 # using paths to the shared objects, not just the names.
 
-my $libcrypto = bldtop_file(shlib('libcrypto'));
-my $libssl = bldtop_file(shlib('libssl'));
+my $libtacrypto = bldtop_file(shlib('libtacrypto'));
+my $libtassl = bldtop_file(shlib('libtassl'));
 
 (my $fh, my $filename) = tempfile();
-ok(run(test(["shlibloadtest", "-crypto_first", $libcrypto, $libssl, $filename])),
+ok(run(test(["shlibloadtest", "-crypto_first", $libtacrypto, $libtassl, $filename])),
    "running shlibloadtest -crypto_first $filename");
 ok(check_atexit($fh));
 unlink $filename;
 ($fh, $filename) = tempfile();
-ok(run(test(["shlibloadtest", "-ssl_first", $libcrypto, $libssl, $filename])),
+ok(run(test(["shlibloadtest", "-ssl_first", $libtacrypto, $libtassl, $filename])),
    "running shlibloadtest -ssl_first $filename");
 ok(check_atexit($fh));
 unlink $filename;
 ($fh, $filename) = tempfile();
-ok(run(test(["shlibloadtest", "-just_crypto", $libcrypto, $libssl, $filename])),
+ok(run(test(["shlibloadtest", "-just_crypto", $libtacrypto, $libtassl, $filename])),
    "running shlibloadtest -just_crypto $filename");
 ok(check_atexit($fh));
 unlink $filename;
 ($fh, $filename) = tempfile();
-ok(run(test(["shlibloadtest", "-dso_ref", $libcrypto, $libssl, $filename])),
+ok(run(test(["shlibloadtest", "-dso_ref", $libtacrypto, $libtassl, $filename])),
    "running shlibloadtest -dso_ref $filename");
 ok(check_atexit($fh));
 unlink $filename;
 ($fh, $filename) = tempfile();
-ok(run(test(["shlibloadtest", "-no_atexit", $libcrypto, $libssl, $filename])),
+ok(run(test(["shlibloadtest", "-no_atexit", $libtacrypto, $libtassl, $filename])),
    "running shlibloadtest -no_atexit $filename");
 ok(!check_atexit($fh));
 unlink $filename;

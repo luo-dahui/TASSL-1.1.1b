@@ -191,7 +191,7 @@ OSSL_STORE_INFO *OSSL_STORE_load(OSSL_STORE_CTX *ctx)
         if (returned_type != OSSL_STORE_INFO_NAME && returned_type != 0) {
             /*
              * Soft assert here so those who want to harsly weed out faulty
-             * loaders can do so using a debugging version of libcrypto.
+             * loaders can do so using a debugging version of libtacrypto.
              */
             if (ctx->loader->expect != NULL)
                 assert(ctx->expected_type == returned_type);

@@ -1,39 +1,39 @@
 IF[{- !$disabled{"engine"} -}]
 
   IF[{- $disabled{"dynamic-engine"} -}]
-    LIBS=../libcrypto
-    SOURCE[../libcrypto]=\
+    LIBS=../libtacrypto
+    SOURCE[../libtacrypto]=\
             e_padlock.c {- $target{padlock_asm_src} -}
     IF[{- !$disabled{capieng} -}]
-      SOURCE[../libcrypto]=e_capi.c
+      SOURCE[../libtacrypto]=e_capi.c
     ENDIF
     IF[{- !$disabled{afalgeng} -}]
-      SOURCE[../libcrypto]=e_afalg.c
+      SOURCE[../libtacrypto]=e_afalg.c
     ENDIF
   ELSE
     ENGINES=padlock
     SOURCE[padlock]=e_padlock.c {- $target{padlock_asm_src} -}
-    DEPEND[padlock]=../libcrypto
+    DEPEND[padlock]=../libtacrypto
     INCLUDE[padlock]=../include
     IF[{- !$disabled{capieng} -}]
       ENGINES=capi
       SOURCE[capi]=e_capi.c
-      DEPEND[capi]=../libcrypto
+      DEPEND[capi]=../libtacrypto
       INCLUDE[capi]=../include
     ENDIF
     IF[{- !$disabled{afalgeng} -}]
       ENGINES=afalg
       SOURCE[afalg]=e_afalg.c
-      DEPEND[afalg]=../libcrypto
+      DEPEND[afalg]=../libtacrypto
       INCLUDE[afalg]= ../include
     ENDIF
 
     ENGINES_NO_INST=ossltest dasync
     SOURCE[dasync]=e_dasync.c
-    DEPEND[dasync]=../libcrypto
+    DEPEND[dasync]=../libtacrypto
     INCLUDE[dasync]=../include
     SOURCE[ossltest]=e_ossltest.c
-    DEPEND[ossltest]=../libcrypto
+    DEPEND[ossltest]=../libtacrypto
     INCLUDE[ossltest]=../include
   ENDIF
 

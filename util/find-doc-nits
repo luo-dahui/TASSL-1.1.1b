@@ -388,10 +388,10 @@ sub checklinks {
 }
 
 sub publicize() {
-    foreach my $name ( &parsenum('util/libcrypto.num') ) {
+    foreach my $name ( &parsenum('util/libtacrypto.num') ) {
         $public{$name} = 1;
     }
-    foreach my $name ( &parsenum('util/libssl.num') ) {
+    foreach my $name ( &parsenum('util/libtassl.num') ) {
         $public{$name} = 1;
     }
     foreach my $name ( &parsenum('util/private.num') ) {
@@ -537,8 +537,8 @@ if ( $opt_u ) {
     foreach ( keys %temp ) {
         $docced{$_} = $temp{$_};
     }
-    &printem('crypto', 'util/libcrypto.num');
-    &printem('ssl', 'util/libssl.num');
+    &printem('crypto', 'util/libtacrypto.num');
+    &printem('ssl', 'util/libtassl.num');
     &checkmacros();
 }
 

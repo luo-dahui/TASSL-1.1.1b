@@ -49,42 +49,42 @@ All their values in all the build.info throughout the source tree are
 collected together and form a set of programs, libraries, engines and
 scripts to be produced, source files, dependencies, etc etc etc.
 
-Let's have a pretend example, a very limited contraption of OpenSSL,
-composed of the program 'apps/openssl', the libraries 'libssl' and
-'libcrypto', an engine 'engines/ossltest' and their sources and
+Let's have a pretend example, a very limited contraption of gmtassl,
+composed of the program 'apps/gmtassl', the libraries 'libtassl' and
+'libtacrypto', an engine 'engines/ossltest' and their sources and
 dependencies.
 
     # build.info
-    LIBS=libcrypto libssl
-    INCLUDE[libcrypto]=include
-    INCLUDE[libssl]=include
-    DEPEND[libssl]=libcrypto
+    LIBS=libtacrypto libtassl
+    INCLUDE[libtacrypto]=include
+    INCLUDE[libtassl]=include
+    DEPEND[libtassl]=libtacrypto
 
 This is the top directory build.info file, and it tells us that two
 libraries are to be built, the include directory 'include/' shall be
 used throughout when building anything that will end up in each
-library, and that the library 'libssl' depend on the library
-'libcrypto' to function properly.
+library, and that the library 'libtassl' depend on the library
+'libtacrypto' to function properly.
 
     # apps/build.info
-    PROGRAMS=openssl
-    SOURCE[openssl]=openssl.c
-    INCLUDE[openssl]=.. ../include
-    DEPEND[openssl]=../libssl
+    PROGRAMS=gmtassl
+    SOURCE[gmtassl]=gmtassl.c
+    INCLUDE[gmtassl]=.. ../include
+    DEPEND[gmtassl]=../libtassl
 
 This is the build.info file in 'apps/', one may notice that all file
 paths mentioned are relative to the directory the build.info file is
 located in.  This one tells us that there's a program to be built
-called 'apps/openssl' (the file name extension will depend on the
+called 'apps/gmtassl' (the file name extension will depend on the
 platform and is therefore not mentioned in the build.info file).  It's
-built from one source file, 'apps/openssl.c', and building it requires
+built from one source file, 'apps/gmtassl.c', and building it requires
 the use of '.' and 'include' include directories (both are declared
 from the point of view of the 'apps/' directory), and that the program
-depends on the library 'libssl' to function properly.
+depends on the library 'libtassl' to function properly.
 
     # crypto/build.info
-    LIBS=../libcrypto
-    SOURCE[../libcrypto]=aes.c evp.c cversion.c
+    LIBS=../libtacrypto
+    SOURCE[../libtacrypto]=aes.c evp.c cversion.c
     DEPEND[cversion.o]=buildinf.h
 
     GENERATE[buildinf.h]=../util/mkbuildinf.pl "$(CC) $(CFLAGS)" "$(PLATFORM)"
@@ -92,13 +92,13 @@ depends on the library 'libssl' to function properly.
     DEPEND[../util/mkbuildinf.pl]=../util/Foo.pm
 
 This is the build.info file in 'crypto', and it tells us a little more
-about what's needed to produce 'libcrypto'.  LIBS is used again to
-declare that 'libcrypto' is to be produced.  This declaration is
+about what's needed to produce 'libtacrypto'.  LIBS is used again to
+declare that 'libtacrypto' is to be produced.  This declaration is
 really unnecessary as it's already mentioned in the top build.info
 file, but can make the info file easier to understand.  This is to
 show that duplicate information isn't an issue.
 
-This build.info file informs us that 'libcrypto' is built from a few
+This build.info file informs us that 'libtacrypto' is built from a few
 source files, 'crypto/aes.c', 'crypto/evp.c' and 'crypto/cversion.c'.
 It also shows us that building the object file inferred from
 'crypto/cversion.c' depends on 'crypto/buildinf.h'.  Finally, it
@@ -115,21 +115,21 @@ Lines in 'BEGINRAW'..'ENDRAW' sections must always mention files as
 seen from the top directory, no exception.
 
     # ssl/build.info
-    LIBS=../libssl
-    SOURCE[../libssl]=tls.c
+    LIBS=../libtassl
+    SOURCE[../libtassl]=tls.c
 
 This is the build.info file in 'ssl/', and it tells us that the
-library 'libssl' is built from the source file 'ssl/tls.c'.
+library 'libtassl' is built from the source file 'ssl/tls.c'.
 
     # engines/build.info
     ENGINES=dasync
     SOURCE[dasync]=e_dasync.c
-    DEPEND[dasync]=../libcrypto
+    DEPEND[dasync]=../libtacrypto
     INCLUDE[dasync]=../include
 
     ENGINES_NO_INST=ossltest
     SOURCE[ossltest]=e_ossltest.c
-    DEPEND[ossltest]=../libcrypto.a
+    DEPEND[ossltest]=../libtacrypto.a
     INCLUDE[ossltest]=../include
 
 This is the build.info file in 'engines/', telling us that two engines
@@ -137,35 +137,35 @@ called 'engines/dasync' and 'engines/ossltest' shall be built, that
 dasync's source is 'engines/e_dasync.c' and ossltest's source is
 'engines/e_ossltest.c' and that the include directory 'include/' may
 be used when building anything that will be part of these engines.
-Also, both engines depend on the library 'libcrypto' to function
+Also, both engines depend on the library 'libtacrypto' to function
 properly.  ossltest is explicitly linked with the static variant of
-the library 'libcrypto'.  Finally, only dasync is being installed, as
+the library 'libtacrypto'.  Finally, only dasync is being installed, as
 ossltest is only for internal testing.
 
 When Configure digests these build.info files, the accumulated
 information comes down to this:
 
-    LIBS=libcrypto libssl
-    SOURCE[libcrypto]=crypto/aes.c crypto/evp.c crypto/cversion.c
+    LIBS=libtacrypto libtassl
+    SOURCE[libtacrypto]=crypto/aes.c crypto/evp.c crypto/cversion.c
     DEPEND[crypto/cversion.o]=crypto/buildinf.h
-    INCLUDE[libcrypto]=include
-    SOURCE[libssl]=ssl/tls.c
-    INCLUDE[libssl]=include
-    DEPEND[libssl]=libcrypto
+    INCLUDE[libtacrypto]=include
+    SOURCE[libtassl]=ssl/tls.c
+    INCLUDE[libtassl]=include
+    DEPEND[libtassl]=libtacrypto
 
-    PROGRAMS=apps/openssl
-    SOURCE[apps/openssl]=apps/openssl.c
-    INCLUDE[apps/openssl]=. include
-    DEPEND[apps/openssl]=libssl
+    PROGRAMS=apps/gmtassl
+    SOURCE[apps/gmtassl]=apps/gmtassl.c
+    INCLUDE[apps/gmtassl]=. include
+    DEPEND[apps/gmtassl]=libtassl
 
     ENGINES=engines/dasync
     SOURCE[engines/dasync]=engines/e_dasync.c
-    DEPEND[engines/dasync]=libcrypto
+    DEPEND[engines/dasync]=libtacrypto
     INCLUDE[engines/dasync]=include
 
     ENGINES_NO_INST=engines/ossltest
     SOURCE[engines/ossltest]=engines/e_ossltest.c
-    DEPEND[engines/ossltest]=libcrypto.a
+    DEPEND[engines/ossltest]=libtacrypto.a
     INCLUDE[engines/ossltest]=include
 
     GENERATE[crypto/buildinf.h]=util/mkbuildinf.pl "$(CC) $(CFLAGS)" "$(PLATFORM)"
@@ -258,9 +258,9 @@ section above would be digested into a %unified_info table:
     our %unified_info = (
         "depends" =>
             {
-                "apps/openssl" =>
+                "apps/gmtassl" =>
                     [
-                        "libssl",
+                        "libtassl",
                     ],
                 "crypto/buildinf.h" =>
                     [
@@ -272,15 +272,15 @@ section above would be digested into a %unified_info table:
                     ],
                 "engines/dasync" =>
                     [
-                        "libcrypto",
+                        "libtacrypto",
                     ],
                 "engines/ossltest" =>
                     [
-                        "libcrypto.a",
+                        "libtacrypto.a",
                     ],
-                "libssl" =>
+                "libtassl" =>
                     [
-                        "libcrypto",
+                        "libtacrypto",
                     ],
                 "util/mkbuildinf.pl" =>
                     [
@@ -304,7 +304,7 @@ section above would be digested into a %unified_info table:
             },
         "includes" =>
             {
-                "apps/openssl" =>
+                "apps/gmtassl" =>
                     [
                         ".",
                         "include",
@@ -313,11 +313,11 @@ section above would be digested into a %unified_info table:
                     [
                         "include"
                     ],
-                "libcrypto" =>
+                "libtacrypto" =>
                     [
                         "include",
                     ],
-                "libssl" =>
+                "libtassl" =>
                     [
                         "include",
                     ],
@@ -334,35 +334,35 @@ section above would be digested into a %unified_info table:
                     ],
                 "libraries" =>
                     [
-                        "libcrypto",
-                        "libssl",
+                        "libtacrypto",
+                        "libtassl",
                     ],
                 "programs" =>
                     [
-                        "apps/openssl",
+                        "apps/gmtassl",
                     ],
            },
         "libraries" =>
             [
-                "libcrypto",
-                "libssl",
+                "libtacrypto",
+                "libtassl",
             ],
         "programs" =>
             [
-                "apps/openssl",
+                "apps/gmtassl",
             ],
         "rawlines" =>
             [
             ],
         "sources" =>
             {
-                "apps/openssl" =>
+                "apps/gmtassl" =>
                     [
-                        "apps/openssl.o",
+                        "apps/gmtassl.o",
                     ],
-                "apps/openssl.o" =>
+                "apps/gmtassl.o" =>
                     [
-                        "apps/openssl.c",
+                        "apps/gmtassl.c",
                     ],
                 "crypto/aes.o" =>
                     [
@@ -392,13 +392,13 @@ section above would be digested into a %unified_info table:
                     [
                         "engines/e_ossltest.o",
                     ],
-                "libcrypto" =>
+                "libtacrypto" =>
                     [
                         "crypto/aes.c",
                         "crypto/cversion.c",
                         "crypto/evp.c",
                     ],
-                "libssl" =>
+                "libtassl" =>
                     [
                         "ssl/tls.c",
                     ],
@@ -411,11 +411,11 @@ section above would be digested into a %unified_info table:
 
 As can be seen, everything in %unified_info is fairly simple suggest
 of information.  Still, it tells us that to build all programs, we
-must build 'apps/openssl', and to build the latter, we will need to
-build all its sources ('apps/openssl.o' in this case) and all the
-other things it depends on (such as 'libssl').  All those dependencies
-need to be built as well, using the same logic, so to build 'libssl',
-we need to build 'ssl/tls.o' as well as 'libcrypto', and to build the
+must build 'apps/gmtassl', and to build the latter, we will need to
+build all its sources ('apps/gmtassl.o' in this case) and all the
+other things it depends on (such as 'libtassl').  All those dependencies
+need to be built as well, using the same logic, so to build 'libtassl',
+we need to build 'ssl/tls.o' as well as 'libtacrypto', and to build the
 latter...
 
 
@@ -574,7 +574,7 @@ programs and all intermediate files, using the rule generating
 functions defined in the build-file template.
 
 As an example with the smaller build.info set we've seen as an
-example, producing the rules to build 'libcrypto' would result in the
+example, producing the rules to build 'libtacrypto' would result in the
 following calls:
 
     # Note: libobj2shlib will only be called if shared libraries are
@@ -584,12 +584,12 @@ following calls:
     # to the implementation to decide which to use as input.
     # Note 3: common.tmpl peals off the ".o" extension from all object
     # files, as the platform at hand may have a different one.
-    libobj2shlib(shlib => "libcrypto",
-                 lib => "libcrypto",
+    libobj2shlib(shlib => "libtacrypto",
+                 lib => "libtacrypto",
                  objs => [ "crypto/aes", "crypto/evp", "crypto/cversion" ],
                  deps => [  ]);
 
-    obj2lib(lib => "libcrypto"
+    obj2lib(lib => "libtacrypto"
             objs => [ "crypto/aes", "crypto/evp", "crypto/cversion" ]);
 
     src2obj(obj => "crypto/aes"

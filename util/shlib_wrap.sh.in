@@ -42,8 +42,8 @@ fi
 THERE="`echo $0 | sed -e 's|[^/]*$||' 2>/dev/null`.."
 [ -d "${THERE}" ] || exec "$@"	# should never happen...
 
-LIBCRYPTOSO="${THERE}/{- shlib('libcrypto') -}"
-LIBSSLSO="${THERE}/{- shlib('libssl') -}"
+LIBCRYPTOSO="${THERE}/{- shlib('libtacrypto') -}"
+LIBSSLSO="${THERE}/{- shlib('libtassl') -}"
 
 SYSNAME=`(uname -s) 2>/dev/null`;
 case "$SYSNAME" in

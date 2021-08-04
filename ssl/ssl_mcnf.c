@@ -17,7 +17,7 @@
 
 void SSL_add_ssl_module(void)
 {
-    /* Do nothing. This will be added automatically by libcrypto */
+    /* Do nothing. This will be added automatically by libtacrypto */
 }
 
 static int ssl_do_config(SSL *s, SSL_CTX *ctx, const char *name, int system)

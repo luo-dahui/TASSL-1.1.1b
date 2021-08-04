@@ -233,8 +233,8 @@
   *) Updated 'openssl rehash' to use OpenSSL consistent default.
      [Richard Levitte]
 
-  *) Moved the load of the ssl_conf module to libcrypto, which helps
-     loading engines that libssl uses before libssl is initialised.
+  *) Moved the load of the ssl_conf module to libtacrypto, which helps
+     loading engines that libtassl uses before libtassl is initialised.
      [Matt Caswell]
 
   *) Added EVP_PKEY_sign() and EVP_PKEY_verify() for EdDSA
@@ -256,10 +256,10 @@
      [Rich Salz]
 
   *) Don't use OPENSSL_ENGINES and OPENSSL_CONF environment values
-     in libcrypto when run as setuid/setgid.
+     in libtacrypto when run as setuid/setgid.
      [Bernd Edlinger]
 
-  *) Load any config file by default when libssl is used.
+  *) Load any config file by default when libtassl is used.
      [Matt Caswell]
 
   *) Added new public header file <openssl/rand_drbg.h> and documentation
@@ -398,7 +398,7 @@
   *) Add SHA3.
      [Andy Polyakov]
 
-  *) The UI API becomes a permanent and integral part of libcrypto, i.e.
+  *) The UI API becomes a permanent and integral part of libtacrypto, i.e.
      not possible to disable entirely.  However, it's still possible to
      disable the console reading UI method, UI_OpenSSL() (use UI_null()
      as a fallback).
@@ -1093,7 +1093,7 @@
      encryptions/decryptions simultaneously. There are currently no built-in
      ciphers with this property but the expectation is that engines will be able
      to offer it to significantly improve throughput. Support has been extended
-     into libssl so that multiple records for a single connection can be
+     into libtassl so that multiple records for a single connection can be
      processed in one go (for >=TLS 1.1).
      [Matt Caswell]
 
@@ -1130,7 +1130,7 @@
      secp256r1, secp521r1, secp384r1.
      [Rich Salz]
 
-  *) RC4 based libssl ciphersuites are now classed as "weak" ciphers and are
+  *) RC4 based libtassl ciphersuites are now classed as "weak" ciphers and are
      disabled by default. They can be re-enabled using the
      enable-weak-ssl-ciphers option to Configure.
      [Matt Caswell]
@@ -1169,7 +1169,7 @@
   *) Configuration change; it's now possible to build dynamic engines
      without having to build shared libraries and vice versa.  This
      only applies to the engines in engines/, those in crypto/engine/
-     will always be built into libcrypto (i.e. "static").
+     will always be built into libtacrypto (i.e. "static").
 
      Building dynamic engines is enabled by default; to disable, use
      the configuration option "disable-dynamic-engine".
@@ -1186,9 +1186,9 @@
 
   *) Configuration change; if there is a known flag to compile
      position independent code, it will always be applied on the
-     libcrypto and libssl object files, and never on the application
+     libtacrypto and libtassl object files, and never on the application
      object files.  This means other libraries that use routines from
-     libcrypto / libssl can be made into shared libraries regardless
+     libtacrypto / libtassl can be made into shared libraries regardless
      of how OpenSSL was configured.
 
      If this isn't desirable, the configuration options "disable-pic"
@@ -1324,7 +1324,7 @@
 
   *) The GOST engine was out of date and therefore it has been removed. An up
      to date GOST engine is now being maintained in an external repository.
-     See: https://wiki.openssl.org/index.php/Binaries. Libssl still retains
+     See: https://wiki.openssl.org/index.php/Binaries. libtassl still retains
      support for GOST ciphersuites (these are only activated if a GOST engine
      is present).
      [Matt Caswell]
@@ -1395,7 +1395,7 @@
      client at compile time by defining OPENSSL_NO_TLS1_2_CLIENT.
      [Kurt Roeckx]
 
-  *) Support for ChaCha20 and Poly1305 added to libcrypto and libssl.
+  *) Support for ChaCha20 and Poly1305 added to libtacrypto and libtassl.
      [Andy Polyakov]
 
   *) New EC_KEY_METHOD, this replaces the older ECDSA_METHOD and ECDH_METHOD
@@ -1434,10 +1434,10 @@
         for deprecated builds.
      [Richard Levitte]
 
-  *) Added ASYNC support. Libcrypto now includes the async sub-library to enable
+  *) Added ASYNC support. libtacrypto now includes the async sub-library to enable
      cryptographic operations to be performed asynchronously as long as an
      asynchronous capable engine is used. See the ASYNC_start_job() man page for
-     further details. Libssl has also had this capability integrated with the
+     further details. libtassl has also had this capability integrated with the
      introduction of the new mode SSL_MODE_ASYNC and associated error
      SSL_ERROR_WANT_ASYNC. See the SSL_CTX_set_mode() and SSL_get_error() man
      pages. This work was developed in partnership with Intel Corp.
@@ -1621,7 +1621,7 @@
      initial patch which was a great help during development.
      [Steve Henson]
 
-  *) All libssl internal structures have been removed from the public header
+  *) All libtassl internal structures have been removed from the public header
      files, and the OPENSSL_NO_SSL_INTERN option has been removed (since it is
      now redundant). Users should not attempt to access internal structures
      directly. Instead they should use the provided API functions.
@@ -1978,7 +1978,7 @@
      multi-process servers.
      [Steve Henson]
 
-  *) Extensive audit of libcrypto with DEBUG_UNUSED. Fix many cases where
+  *) Extensive audit of libtacrypto with DEBUG_UNUSED. Fix many cases where
      return value is ignored. NB. The functions RAND_add(), RAND_seed(),
      BIO_set_cipher() and some obscure PEM functions were changed so they
      can now return an error. The RAND changes required a change to the
@@ -2196,9 +2196,9 @@
      vulnerable where they print out ASN.1 data, or if untrusted data is passed
      as command line arguments.
 
-     Libssl is not considered directly vulnerable. Additionally certificates etc
-     received via remote connections via libssl are also unlikely to be able to
-     trigger these issues because of message size limits enforced within libssl.
+     libtassl is not considered directly vulnerable. Additionally certificates etc
+     received via remote connections via libtassl are also unlikely to be able to
+     trigger these issues because of message size limits enforced within libtassl.
 
      This issue was reported to OpenSSL Guido Vranken.
      (CVE-2016-0799)
@@ -3583,7 +3583,7 @@
   *) New build option no-ec2m to disable characteristic 2 code.
      [Steve Henson]
 
-  *) Backport libcrypto audit of return value checking from 1.1.0-dev; not
+  *) Backport libtacrypto audit of return value checking from 1.1.0-dev; not
      all cases can be covered as some introduce binary incompatibilities.
      [Steve Henson]
 
@@ -5536,7 +5536,7 @@
   [NB: OpenSSL 0.9.7i and later 0.9.7 patch levels were released after
   OpenSSL 0.9.8.]
 
-  *) Add libcrypto.pc and libssl.pc for those who feel they need them.
+  *) Add libtacrypto.pc and libtassl.pc for those who feel they need them.
      [Richard Levitte]
 
   *) Change CA.sh and CA.pl so they don't bundle the CSR and the private
@@ -6062,7 +6062,7 @@
      directory engines/.
      The engines in engines/ are built as shared libraries if
      the "shared" options was given to ./Configure or ./config.
-     Otherwise, they are inserted in libcrypto.a.
+     Otherwise, they are inserted in libtacrypto.a.
      /usr/local/ssl/engines is the default directory for dynamic
      engines, but that can be overridden at configure time through
      the usual use of --prefix and/or --openssldir, and at run
@@ -6467,8 +6467,8 @@
 
   *) Wrapped the definition of EVP_MAX_MD_SIZE in a #ifdef OPENSSL_FIPS.
      The value now differs depending on if you build for FIPS or not.
-     BEWARE!  A program linked with a shared FIPSed libcrypto can't be
-     safely run with a non-FIPSed libcrypto, as it may crash because of
+     BEWARE!  A program linked with a shared FIPSed libtacrypto can't be
+     safely run with a non-FIPSed libtacrypto, as it may crash because of
      the difference induced by this change.
      [Andy Polyakov]
 
@@ -6785,7 +6785,7 @@
 
   *) Make the no-err option work as intended.  The intention with no-err
      is not to have the whole error stack handling routines removed from
-     libcrypto, it's only intended to remove all the function name and
+     libtacrypto, it's only intended to remove all the function name and
      reason texts, thereby removing some of the footprint that may not
      be interesting if those errors aren't displayed anyway.
 
@@ -6877,11 +6877,11 @@
      means that this particular engine will not work properly anywhere.
      This is a very unfortunate situation which forces us, in the name
      of usability, to give the hw_ncipher.c a static lock, which is part
-     of libcrypto.
+     of libtacrypto.
      NOTE: This is for the 0.9.7 series ONLY.  This hack will never
      appear in 0.9.8 or later.  We EXPECT application authors to have
      dealt properly with this when 0.9.8 is released (unless we actually
-     make such changes in the libcrypto locking code that changes will
+     make such changes in the libtacrypto locking code that changes will
      have to be made anyway).
      [Richard Levitte]
 
@@ -9627,8 +9627,8 @@ des-cbc           3624.96k     5258.21k     5530.91k     5624.30k     5628.26k
   *) Rework the system to generate shared libraries:
 
      - Make note of the expected extension for the shared libraries and
-       if there is a need for symbolic links from for example libcrypto.so.0
-       to libcrypto.so.0.9.7.  There is extended info in Configure for
+       if there is a need for symbolic links from for example libtacrypto.so.0
+       to libtacrypto.so.0.9.7.  There is extended info in Configure for
        that.
 
      - Make as few rebuilds of the shared libraries as possible.
@@ -10322,7 +10322,7 @@ des-cbc           3624.96k     5258.21k     5530.91k     5624.30k     5628.26k
      experimental TLS 1.0 ciphers are currently treated as SSL 3.0 ciphers.)
      [Bodo Moeller]
 
-  *) Initial DSO code added into libcrypto for letting OpenSSL (and
+  *) Initial DSO code added into libtacrypto for letting OpenSSL (and
      OpenSSL-based applications) load shared libraries and bind to
      them in a portable way.
      [Geoff Thorpe, with contributions from Richard Levitte]
@@ -10770,7 +10770,7 @@ des-cbc           3624.96k     5258.21k     5530.91k     5624.30k     5628.26k
      because they handle more complex structures.)
      [Steve Henson]
 
-  *) Add missing #ifndefs that caused missing symbols when building libssl
+  *) Add missing #ifndefs that caused missing symbols when building libtassl
      as a shared library without RSA.  Use #ifndef NO_SSL2 instead of
      NO_RSA in ssl/s2*.c.
      [Kris Kennaway <kris@hub.freebsd.org>, modified by Ulf Möller]

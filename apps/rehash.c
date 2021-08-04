@@ -23,7 +23,7 @@
 
 /*
  * Make sure that the processing of symbol names is treated the same as when
- * libcrypto is built.  This is done automatically for public headers (see
+ * libtacrypto is built.  This is done automatically for public headers (see
  * include/openssl/__DECC_INCLUDE_PROLOGUE.H and __DECC_INCLUDE_EPILOGUE.H),
  * but not for internal headers.
  */

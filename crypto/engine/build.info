@@ -1,5 +1,5 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=\
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=\
         eng_err.c eng_lib.c eng_list.c eng_init.c eng_ctrl.c \
         eng_table.c eng_pkey.c eng_fat.c eng_all.c \
         tb_rsa.c tb_dsa.c tb_dh.c tb_rand.c \
@@ -7,5 +7,5 @@ SOURCE[../../libcrypto]=\
         eng_openssl.c eng_cnf.c eng_dyn.c \
         eng_rdrand.c
 IF[{- !$disabled{devcryptoeng} -}]
-  SOURCE[../../libcrypto]=eng_devcrypto.c
+  SOURCE[../../libtacrypto]=eng_devcrypto.c
 ENDIF

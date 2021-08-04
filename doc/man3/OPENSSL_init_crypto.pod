@@ -28,7 +28,7 @@ and deinitialisation functions
 
 =head1 DESCRIPTION
 
-During normal operation OpenSSL (libcrypto) will allocate various resources at
+During normal operation OpenSSL (libtacrypto) will allocate various resources at
 start up that must, subsequently, be freed on close down of the library.
 Additionally some resources are allocated on a per thread basis (if the
 application is multi-threaded), and these resources must be freed prior to the
@@ -41,7 +41,7 @@ automatically deinitialise as required.
 However, there may be situations when explicit initialisation is desirable or
 needed, for example when some non-default initialisation is required. The
 function OPENSSL_init_crypto() can be used for this purpose for
-libcrypto (see also L<OPENSSL_init_ssl(3)> for the libssl
+libtacrypto (see also L<OPENSSL_init_ssl(3)> for the libtassl
 equivalent).
 
 Numerous internal OpenSSL functions call OPENSSL_init_crypto().
@@ -49,22 +49,22 @@ Therefore, in order to perform non-default initialisation,
 OPENSSL_init_crypto() MUST be called by application code prior to
 any other OpenSSL function calls.
 
-The B<opts> parameter specifies which aspects of libcrypto should be
+The B<opts> parameter specifies which aspects of libtacrypto should be
 initialised. Valid options are:
 
 =over 4
 
 =item OPENSSL_INIT_NO_LOAD_CRYPTO_STRINGS
 
-Suppress automatic loading of the libcrypto error strings. This option is
+Suppress automatic loading of the libtacrypto error strings. This option is
 not a default option. Once selected subsequent calls to
 OPENSSL_init_crypto() with the option
 B<OPENSSL_INIT_LOAD_CRYPTO_STRINGS> will be ignored.
 
 =item OPENSSL_INIT_LOAD_CRYPTO_STRINGS
 
-Automatic loading of the libcrypto error strings. With this option the
-library will automatically load the libcrypto error strings.
+Automatic loading of the libtacrypto error strings. With this option the
+library will automatically load the libtacrypto error strings.
 This option is a default option. Once selected subsequent calls to
 OPENSSL_init_crypto() with the option
 B<OPENSSL_INIT_NO_LOAD_CRYPTO_STRINGS> will be ignored.
@@ -72,27 +72,27 @@ B<OPENSSL_INIT_NO_LOAD_CRYPTO_STRINGS> will be ignored.
 =item OPENSSL_INIT_ADD_ALL_CIPHERS
 
 With this option the library will automatically load and make available all
-libcrypto ciphers. This option is a default option. Once selected subsequent
+libtacrypto ciphers. This option is a default option. Once selected subsequent
 calls to OPENSSL_init_crypto() with the option
 B<OPENSSL_INIT_NO_ADD_ALL_CIPHERS> will be ignored.
 
 =item OPENSSL_INIT_ADD_ALL_DIGESTS
 
 With this option the library will automatically load and make available all
-libcrypto digests. This option is a default option. Once selected subsequent
+libtacrypto digests. This option is a default option. Once selected subsequent
 calls to OPENSSL_init_crypto() with the option
 B<OPENSSL_INIT_NO_ADD_ALL_CIPHERS> will be ignored.
 
 =item OPENSSL_INIT_NO_ADD_ALL_CIPHERS
 
-With this option the library will suppress automatic loading of libcrypto
+With this option the library will suppress automatic loading of libtacrypto
 ciphers. This option is not a default option. Once selected subsequent
 calls to OPENSSL_init_crypto() with the option
 B<OPENSSL_INIT_ADD_ALL_CIPHERS> will be ignored.
 
 =item OPENSSL_INIT_NO_ADD_ALL_DIGESTS
 
-With this option the library will suppress automatic loading of libcrypto
+With this option the library will suppress automatic loading of libtacrypto
 digests. This option is not a default option. Once selected subsequent
 calls to OPENSSL_init_crypto() with the option
 B<OPENSSL_INIT_ADD_ALL_DIGESTS> will be ignored.
@@ -100,9 +100,9 @@ B<OPENSSL_INIT_ADD_ALL_DIGESTS> will be ignored.
 =item OPENSSL_INIT_LOAD_CONFIG
 
 With this option an OpenSSL configuration file will be automatically loaded and
-used by calling OPENSSL_config(). This is not a default option for libcrypto.
-As of OpenSSL 1.1.1 this is a default option for libssl (see
-L<OPENSSL_init_ssl(3)> for further details about libssl initialisation). See the
+used by calling OPENSSL_config(). This is not a default option for libtacrypto.
+As of OpenSSL 1.1.1 this is a default option for libtassl (see
+L<OPENSSL_init_ssl(3)> for further details about libtassl initialisation). See the
 description of OPENSSL_INIT_new(), below.
 
 =item OPENSSL_INIT_NO_LOAD_CONFIG
@@ -113,7 +113,7 @@ option.
 
 =item OPENSSL_INIT_ASYNC
 
-With this option the library with automatically initialise the libcrypto async
+With this option the library with automatically initialise the libtacrypto async
 sub-library (see L<ASYNC_start_job(3)>). This is a default option.
 
 =item OPENSSL_INIT_ENGINE_RDRAND
@@ -177,8 +177,8 @@ OPENSSL_init_crypto(). For example:
  OPENSSL_init_crypto(OPENSSL_INIT_NO_ADD_ALL_CIPHERS
                      | OPENSSL_INIT_NO_ADD_ALL_DIGESTS, NULL);
 
-The OPENSSL_cleanup() function deinitialises OpenSSL (both libcrypto
-and libssl). All resources allocated by OpenSSL are freed. Typically there
+The OPENSSL_cleanup() function deinitialises OpenSSL (both libtacrypto
+and libtassl). All resources allocated by OpenSSL are freed. Typically there
 should be no need to call this function directly as it is initiated
 automatically on application exit. This is done via the standard C library
 atexit() function. In the event that the application will close in a manner

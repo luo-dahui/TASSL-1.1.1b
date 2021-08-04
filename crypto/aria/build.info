@@ -1,4 +1,4 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=\
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=\
         aria.c
 

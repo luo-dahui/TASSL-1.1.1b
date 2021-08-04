@@ -1,2 +1,2 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=cmac.c cm_ameth.c cm_pmeth.c
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=cmac.c cm_ameth.c cm_pmeth.c

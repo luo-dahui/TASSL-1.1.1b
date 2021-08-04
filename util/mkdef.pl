@@ -12,7 +12,7 @@
 # It does this by parsing the header files and looking for the
 # prototyped functions: it then prunes the output.
 #
-# Intermediary files are created, call libcrypto.num and libssl.num,
+# Intermediary files are created, call libtacrypto.num and libtassl.num,
 # The format of these files is:
 #
 #	routine-name	nnnn	vers	info
@@ -72,10 +72,10 @@ use OpenSSL::Glob;
 #             print
 #         }
 #     }' *.so*
-# libcrypto-opt.so.1.1
-# libcrypto.so -> libcrypto-opt.so.1.1
-# libssl-opt.so.1.1
-# libssl.so -> libssl-opt.so.1.1
+# libtacrypto-opt.so.1.1
+# libtacrypto.so -> libtacrypto-opt.so.1.1
+# libtassl-opt.so.1.1
+# libtassl.so -> libtassl-opt.so.1.1
 #
 # whose SONAMEs and dependencies are:
 #
@@ -83,23 +83,23 @@ use OpenSSL::Glob;
 #     echo $l
 #     readelf -d $l | egrep 'SONAME|NEEDED.*(ssl|crypto)'
 #   done
-# libcrypto.so
-#  0x000000000000000e (SONAME)             Library soname: [libcrypto-opt.so.1.1]
-# libssl.so
-#  0x0000000000000001 (NEEDED)             Shared library: [libcrypto-opt.so.1.1]
-#  0x000000000000000e (SONAME)             Library soname: [libssl-opt.so.1.1]
+# libtacrypto.so
+#  0x000000000000000e (SONAME)             Library soname: [libtacrypto-opt.so.1.1]
+# libtassl.so
+#  0x0000000000000001 (NEEDED)             Shared library: [libtacrypto-opt.so.1.1]
+#  0x000000000000000e (SONAME)             Library soname: [libtassl-opt.so.1.1]
 #
 # We case-fold the variant tag to upper case and replace all non-alnum
 # characters with "_".  This yields the following symbol versions:
 #
-# $ nm libcrypto.so | grep -w A
+# $ nm libtacrypto.so | grep -w A
 # 0000000000000000 A OPENSSL_OPT_1_1_0
 # 0000000000000000 A OPENSSL_OPT_1_1_0a
 # 0000000000000000 A OPENSSL_OPT_1_1_0c
 # 0000000000000000 A OPENSSL_OPT_1_1_0d
 # 0000000000000000 A OPENSSL_OPT_1_1_0f
 # 0000000000000000 A OPENSSL_OPT_1_1_0g
-# $ nm libssl.so | grep -w A
+# $ nm libtassl.so | grep -w A
 # 0000000000000000 A OPENSSL_OPT_1_1_0
 # 0000000000000000 A OPENSSL_OPT_1_1_0d
 #
@@ -109,8 +109,8 @@ my $debug=0;
 my $trace=0;
 my $verbose=0;
 
-my $crypto_num= catfile($config{sourcedir},"util","libcrypto.num");
-my $ssl_num=    catfile($config{sourcedir},"util","libssl.num");
+my $crypto_num= catfile($config{sourcedir},"util","libtacrypto.num");
+my $ssl_num=    catfile($config{sourcedir},"util","libtassl.num");
 my $libname;
 
 my $do_update = 0;
@@ -189,8 +189,8 @@ foreach (@ARGV, split(/ /, $config{options}))
 		$zlib = 1;
 	}
 
-	$do_crypto=1 if $_ eq "libcrypto" || $_ eq "crypto";
-	$do_ssl=1 if $_ eq "libssl" || $_ eq "ssl";
+	$do_crypto=1 if $_ eq "libtacrypto" || $_ eq "crypto";
+	$do_ssl=1 if $_ eq "libtassl" || $_ eq "ssl";
 
 	$do_update=1 if $_ eq "update";
 	$do_rewrite=1 if $_ eq "rewrite";
@@ -198,15 +198,15 @@ foreach (@ARGV, split(/ /, $config{options}))
 	$do_ctestall=1 if $_ eq "ctestall";
 	$do_checkexist=1 if $_ eq "exist";
 	}
-$libname = $unified_info{sharednames}->{libcrypto} if $do_crypto;
-$libname = $unified_info{sharednames}->{libssl} if $do_ssl;
+$libname = $unified_info{sharednames}->{libtacrypto} if $do_crypto;
+$libname = $unified_info{sharednames}->{libtassl} if $do_ssl;
 
 if (!$libname) {
 	if ($do_ssl) {
-		$libname="LIBSSL";
+		$libname="libtassl";
 	}
 	if ($do_crypto) {
-		$libname="LIBCRYPTO";
+		$libname="libtacrypto";
 	}
 }
 
@@ -243,7 +243,7 @@ $skipthese{'include/openssl/ebcdic.h'} = 1;
 $skipthese{'include/openssl/opensslconf.h'} = 1;
 
 # We use headers found in include/openssl and include/internal only.
-# The latter is needed so libssl.so/.dll/.exe can link properly.
+# The latter is needed so libtassl.so/.dll/.exe can link properly.
 my $crypto ="include/internal/dso.h";
 $crypto.=" include/internal/o_dir.h";
 $crypto.=" include/internal/o_str.h";
@@ -256,34 +256,34 @@ foreach my $f ( glob(catfile($config{sourcedir},'include/openssl/*.h')) ) {
 
 my $symhacks="include/openssl/symhacks.h";
 
-my @ssl_symbols = &do_defs("LIBSSL", $ssl, $symhacks);
-my @crypto_symbols = &do_defs("LIBCRYPTO", $crypto, $symhacks);
+my @ssl_symbols = &do_defs("libtassl", $ssl, $symhacks);
+my @crypto_symbols = &do_defs("libtacrypto", $crypto, $symhacks);
 
 if ($do_update) {
 
 if ($do_ssl == 1) {
 
-	&maybe_add_info("LIBSSL",*ssl_list,@ssl_symbols);
+	&maybe_add_info("libtassl",*ssl_list,@ssl_symbols);
 	if ($do_rewrite == 1) {
 		open(OUT, ">$ssl_num");
-		&rewrite_numbers(*OUT,"LIBSSL",*ssl_list,@ssl_symbols);
+		&rewrite_numbers(*OUT,"libtassl",*ssl_list,@ssl_symbols);
 	} else {
 		open(OUT, ">>$ssl_num");
 	}
-	&update_numbers(*OUT,"LIBSSL",*ssl_list,$max_ssl,@ssl_symbols);
+	&update_numbers(*OUT,"libtassl",*ssl_list,$max_ssl,@ssl_symbols);
 	close OUT;
 }
 
 if($do_crypto == 1) {
 
-	&maybe_add_info("LIBCRYPTO",*crypto_list,@crypto_symbols);
+	&maybe_add_info("libtacrypto",*crypto_list,@crypto_symbols);
 	if ($do_rewrite == 1) {
 		open(OUT, ">$crypto_num");
-		&rewrite_numbers(*OUT,"LIBCRYPTO",*crypto_list,@crypto_symbols);
+		&rewrite_numbers(*OUT,"libtacrypto",*crypto_list,@crypto_symbols);
 	} else {
 		open(OUT, ">>$crypto_num");
 	}
-	&update_numbers(*OUT,"LIBCRYPTO",*crypto_list,$max_crypto,@crypto_symbols);
+	&update_numbers(*OUT,"libtacrypto",*crypto_list,$max_crypto,@crypto_symbols);
 	close OUT;
 }
 
@@ -303,10 +303,10 @@ if($do_crypto == 1) {
 int main()
 {
 EOF
-	&print_test_file(*STDOUT,"LIBSSL",*ssl_list,$do_ctestall,@ssl_symbols)
+	&print_test_file(*STDOUT,"libtassl",*ssl_list,$do_ctestall,@ssl_symbols)
 		if $do_ssl == 1;
 
-	&print_test_file(*STDOUT,"LIBCRYPTO",*crypto_list,$do_ctestall,@crypto_symbols)
+	&print_test_file(*STDOUT,"libtacrypto",*crypto_list,$do_ctestall,@crypto_symbols)
 		if $do_crypto == 1;
 
 	print "}\n";

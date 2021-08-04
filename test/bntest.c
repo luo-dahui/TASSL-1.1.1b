@@ -2248,7 +2248,7 @@ static int test_ctx_consttime_flag(void)
      *   number of BIGNUMs from it. In absence of leaks, none of the
      *   BIGNUMs in the new frame should have BN_FLG_CONSTTIME set.
      *
-     * In actual BN_CTX usage inside libcrypto the leak could happen at
+     * In actual BN_CTX usage inside libtacrypto the leak could happen at
      * any depth level in the BN_CTX stack, with varying results
      * depending on the patterns of sibling trees of nested function
      * calls sharing the same BN_CTX object, and the effect of

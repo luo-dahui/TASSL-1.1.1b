@@ -1,5 +1,5 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=\
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=\
 	siphash.c \
 	siphash_pmeth.c \
 	siphash_ameth.c

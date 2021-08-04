@@ -79,7 +79,7 @@ if ( $internal ) {
     @source = @ARGV;
 }
 
-# To detect if there is any error generation for a libcrypto/libssl libs
+# To detect if there is any error generation for a libtacrypto/libtassl libs
 # we don't know, we need to find out what libs we do know.  That list is
 # readily available in crypto/err/openssl.ec, in form of lines starting
 # with "L ".  Note that we always rely on the modules SYS and ERR to be

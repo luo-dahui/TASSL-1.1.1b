@@ -24,10 +24,10 @@
 
  The OpenSSL toolkit includes:
 
- libssl (with platform specific naming):
+ libtassl (with platform specific naming):
      Provides the client and server-side implementations for SSLv3 and TLS.
 
- libcrypto (with platform specific naming):
+ libtacrypto (with platform specific naming):
      Provides general cryptographic and X.509 support needed by SSL/TLS but
      not logically part of it.
 

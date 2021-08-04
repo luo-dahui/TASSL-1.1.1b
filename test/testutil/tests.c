@@ -139,7 +139,7 @@ void test_perror(const char *s)
 {
     /*
      * Using openssl_strerror_r causes linking issues since it isn't
-     * exported from libcrypto.so
+     * exported from libtacrypto.so
      */
     TEST_error("%s: %s", s, strerror(errno));
 }

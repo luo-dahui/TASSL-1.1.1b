@@ -1,5 +1,5 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=\
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=\
         sha1dgst.c sha1_one.c sha256.c sha512.c {- $target{sha1_asm_src} -} \
         {- $target{keccak1600_asm_src} -}
 

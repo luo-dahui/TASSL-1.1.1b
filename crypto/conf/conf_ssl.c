@@ -16,7 +16,7 @@
 
 /*
  * SSL library configuration module placeholder. We load it here but defer
- * all decisions about its contents to libssl.
+ * all decisions about its contents to libtassl.
  */
 
 struct ssl_conf_name_st {

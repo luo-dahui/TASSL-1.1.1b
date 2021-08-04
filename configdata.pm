@@ -439,12 +439,12 @@ our %unified_info = (
                 [
                     "apps/progs.h",
                 ],
-            "apps/openssl" =>
+            "apps/gmtassl" =>
                 [
                     "apps/libapps.a",
-                    "libssl",
+                    "libtassl",
                 ],
-            "apps/openssl.o" =>
+            "apps/gmtassl.o" =>
                 [
                     "apps/progs.h",
                 ],
@@ -662,1012 +662,1012 @@ our %unified_info = (
                 ],
             "engines/capi" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "engines/dasync" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "engines/ossltest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "engines/padlock" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/asn1-test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "fuzz/asn1parse-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/bignum-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/bndiv-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/client-test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "fuzz/cms-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/conf-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/crl-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/ct-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "fuzz/server-test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "fuzz/x509-test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "include/openssl/opensslconf.h" =>
                 [
                     "configdata.pm",
                 ],
-            "libcrypto.map" =>
+            "libtacrypto.map" =>
                 [
-                    "util/libcrypto.num",
+                    "util/libtacrypto.num",
                 ],
-            "libssl" =>
+            "libtassl" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
-            "libssl.map" =>
+            "libtassl.map" =>
                 [
-                    "util/libssl.num",
+                    "util/libtassl.num",
                 ],
             "test/aborttest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "test/afalgtest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/asn1_decode_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/asn1_encode_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/asn1_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/asn1_string_table_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/asn1_time_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/asynciotest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/asynctest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "test/bad_dtls_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/bftest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/bio_callback_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/bio_enc_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/bio_memleak_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/bioprinttest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/bntest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/buildtest_aes" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_asn1" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_asn1t" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_async" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_bio" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_blowfish" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_bn" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_buffer" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_camellia" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_cast" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_cmac" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_cms" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_comp" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_conf" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_conf_api" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_crypto" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ct" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_des" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_dh" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_dsa" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_dtls1" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_e_os2" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ebcdic" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ec" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ecdh" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ecdsa" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_engine" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_evp" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_hmac" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_idea" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_kdf" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_lhash" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_md4" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_md5" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_mdc2" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_modes" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_obj_mac" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_objects" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ocsp" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_opensslv" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ossl_typ" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_pem" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_pem2" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_pkcs12" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_pkcs7" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_rand" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_rand_drbg" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_rc2" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_rc4" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ripemd" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_rsa" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_safestack" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_seed" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_sha" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_sm2" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_sm3" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_sm4" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_srp" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_srtp" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ssl" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ssl2" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_stack" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_store" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_symhacks" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_tls1" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ts" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_txt_db" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_ui" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_whrlpool" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_x509" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_x509_vfy" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/buildtest_x509v3" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/casttest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/chacha_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/cipherbytes_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/cipherlist_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/ciphername_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/clienthellotest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/cmsapitest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/conf_include_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/constant_time_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/crltest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ct_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ctype_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/curve448_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/d2i_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/danetest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/destest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/dhtest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/drbg_cavs_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/drbgtest" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/dsa_no_digest_size_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/dsatest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/dtls_mtu_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/dtlstest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/dtlsv1listentest" =>
                 [
-                    "libssl",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/ec_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/ecdsatest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ecstresstest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ectest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/enginetest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/errtest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/evp_extra_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/evp_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/exdatatest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/exptest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/fatalerrtest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/gmdifftest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/gosttest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/hmactest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ideatest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/igetest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/lhash_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/libtestutil.a" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "test/md2test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/mdc2_internal_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/mdc2test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/memleaktest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/modes_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/ocspapitest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/packettest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/pbelutest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/pemtest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/pkey_meth_kdf_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/pkey_meth_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/poly1305_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/rc2test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/rc4test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/rc5test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/rdrand_sanitytest" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/recordlentest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/rsa_mp_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/rsa_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/sanitytest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/secmemtest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/servername_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/siphash_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/sm2_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/sm4_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/srptest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ssl_cert_table_internal_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/ssl_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/ssl_test_ctx_test" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/sslapitest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/sslbuffertest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/sslcorrupttest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/ssltest_old" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "test/stack_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/sysdefaulttest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/test_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/threadstest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/time_offset_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/tls13ccstest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/tls13encryptiontest" =>
                 [
-                    "libcrypto",
-                    "libssl.a",
+                    "libtacrypto",
+                    "libtassl.a",
                     "test/libtestutil.a",
                 ],
             "test/tls13secretstest" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/uitest" =>
                 [
                     "apps/libapps.a",
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                     "test/libtestutil.a",
                 ],
             "test/v3ext" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/v3nametest" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/verify_extra_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/versions" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                 ],
             "test/wpackettest" =>
                 [
-                    "libcrypto",
-                    "libssl.a",
+                    "libtacrypto",
+                    "libtassl.a",
                     "test/libtestutil.a",
                 ],
             "test/x509_check_cert_pkey_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/x509_dup_cert_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/x509_internal_test" =>
                 [
-                    "libcrypto.a",
+                    "libtacrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/x509_time_test" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
             "test/x509aux" =>
                 [
-                    "libcrypto",
+                    "libtacrypto",
                     "test/libtestutil.a",
                 ],
         },
@@ -1679,7 +1679,7 @@ our %unified_info = (
                         {
                             "bin" =>
                                 [
-                                    "apps/openssl",
+                                    "apps/gmtassl",
                                 ],
                             "lib" =>
                                 [
@@ -1723,7 +1723,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1749,7 +1749,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1763,7 +1763,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1840,7 +1840,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1856,7 +1856,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1872,7 +1872,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1890,7 +1890,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1926,7 +1926,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1943,7 +1943,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -1992,7 +1992,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2006,7 +2006,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2021,7 +2021,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2040,7 +2040,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2058,7 +2058,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2072,7 +2072,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2088,7 +2088,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2115,7 +2115,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2131,7 +2131,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2152,7 +2152,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2175,7 +2175,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2207,7 +2207,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2234,7 +2234,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2260,7 +2260,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2280,7 +2280,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2327,7 +2327,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2345,7 +2345,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2359,7 +2359,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2394,7 +2394,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2410,7 +2410,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2484,7 +2484,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2500,7 +2500,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2518,7 +2518,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2535,7 +2535,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2550,7 +2550,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2565,7 +2565,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2581,7 +2581,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2596,7 +2596,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2621,7 +2621,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2639,7 +2639,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2662,7 +2662,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2686,7 +2686,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2715,7 +2715,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2736,7 +2736,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2753,7 +2753,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2775,7 +2775,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2793,7 +2793,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2808,7 +2808,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2823,7 +2823,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2858,7 +2858,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2876,7 +2876,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2899,7 +2899,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2915,7 +2915,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2932,7 +2932,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2947,7 +2947,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2961,7 +2961,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2976,7 +2976,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -2990,7 +2990,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3009,7 +3009,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3033,7 +3033,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3047,7 +3047,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3065,7 +3065,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3080,7 +3080,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3129,7 +3129,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3179,7 +3179,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libcrypto",
+                                    "libtacrypto",
                                 ],
                         },
                 },
@@ -3260,7 +3260,7 @@ our %unified_info = (
                                 ],
                             "lib" =>
                                 [
-                                    "libssl",
+                                    "libtassl",
                                 ],
                         },
                 },
@@ -3279,7 +3279,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libssl",
+                                    "libtassl",
                                 ],
                         },
                 },
@@ -3301,7 +3301,7 @@ our %unified_info = (
                         {
                             "lib" =>
                                 [
-                                    "libssl",
+                                    "libtassl",
                                 ],
                         },
                 },
@@ -4259,13 +4259,13 @@ our %unified_info = (
                 [
                     "include/openssl/opensslconf.h.in",
                 ],
-            "libcrypto.map" =>
+            "libtacrypto.map" =>
                 [
                     "util/mkdef.pl",
                     "crypto",
                     "linux",
                 ],
-            "libssl.map" =>
+            "libtassl.map" =>
                 [
                     "util/mkdef.pl",
                     "ssl",
@@ -4769,7 +4769,7 @@ our %unified_info = (
                     "include",
                     "apps",
                 ],
-            "apps/openssl.o" =>
+            "apps/gmtassl.o" =>
                 [
                     ".",
                     "include",
@@ -10283,12 +10283,12 @@ our %unified_info = (
                 ],
             "libraries" =>
                 [
-                    "libcrypto",
-                    "libssl",
+                    "libtacrypto",
+                    "libtassl",
                 ],
             "programs" =>
                 [
-                    "apps/openssl",
+                    "apps/gmtassl",
                 ],
             "scripts" =>
                 [
@@ -10303,8 +10303,8 @@ our %unified_info = (
     "libraries" =>
         [
             "apps/libapps.a",
-            "libcrypto",
-            "libssl",
+            "libtacrypto",
+            "libtassl",
             "test/libtestutil.a",
         ],
     "overrides" =>
@@ -10312,7 +10312,7 @@ our %unified_info = (
         ],
     "programs" =>
         [
-            "apps/openssl",
+            "apps/gmtassl",
             "fuzz/asn1-test",
             "fuzz/asn1parse-test",
             "fuzz/bignum-test",
@@ -10554,19 +10554,19 @@ our %unified_info = (
         ],
     "shared_sources" =>
         {
-            "libcrypto" =>
+            "libtacrypto" =>
                 [
-                    "libcrypto.map",
+                    "libtacrypto.map",
                 ],
-            "libssl" =>
+            "libtassl" =>
                 [
-                    "libssl.map",
+                    "libtassl.map",
                 ],
         },
     "sharednames" =>
         {
-            "libcrypto" => "libcrypto",
-            "libssl" => "libssl",
+            "libtacrypto" => "libtacrypto",
+            "libtassl" => "libtassl",
         },
     "sources" =>
         {
@@ -10675,7 +10675,7 @@ our %unified_info = (
                 [
                     "apps/ocsp.c",
                 ],
-            "apps/openssl" =>
+            "apps/gmtassl" =>
                 [
                     "apps/asn1pars.o",
                     "apps/ca.o",
@@ -10697,7 +10697,7 @@ our %unified_info = (
                     "apps/genrsa.o",
                     "apps/nseq.o",
                     "apps/ocsp.o",
-                    "apps/openssl.o",
+                    "apps/gmtassl.o",
                     "apps/passwd.o",
                     "apps/pkcs12.o",
                     "apps/pkcs7.o",
@@ -10725,9 +10725,9 @@ our %unified_info = (
                     "apps/version.o",
                     "apps/x509.o",
                 ],
-            "apps/openssl.o" =>
+            "apps/gmtassl.o" =>
                 [
-                    "apps/openssl.c",
+                    "apps/gmtassl.c",
                 ],
             "apps/opt.o" =>
                 [
@@ -13625,7 +13625,7 @@ our %unified_info = (
                 [
                     "fuzz/x509.c",
                 ],
-            "libcrypto" =>
+            "libtacrypto" =>
                 [
                     "crypto/aes/aes-x86_64.o",
                     "crypto/aes/aes_cfb.o",
@@ -14287,7 +14287,7 @@ our %unified_info = (
                     "crypto/x509v3/v3err.o",
                     "crypto/x86_64cpuid.o",
                 ],
-            "libssl" =>
+            "libtassl" =>
                 [
                     "ssl/bio_ssl.o",
                     "ssl/d1_lib.o",

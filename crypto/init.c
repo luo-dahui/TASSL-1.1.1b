@@ -37,12 +37,12 @@ static int stopped = 0;
  * to call this single destructor on non-pthread platform[s].
  *
  * Initial value is "impossible". It is used as guard value to shortcut
- * destructor for threads terminating before libcrypto is initialized or
+ * destructor for threads terminating before libtacrypto is initialized or
  * after it's de-initialized. Access to the key doesn't have to be
- * serialized for the said threads, because they didn't use libcrypto
+ * serialized for the said threads, because they didn't use libtacrypto
  * and it doesn't matter if they pick "impossible" or derefernce real
  * key value and pull NULL past initialization in the first thread that
- * intends to use libcrypto.
+ * intends to use libtacrypto.
  */
 static union {
     long sane;

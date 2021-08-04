@@ -139,7 +139,7 @@ static int test_lib(void)
     case NO_ATEXIT:
     case CRYPTO_FIRST:
         if (!shlib_load(path_crypto, &cryptolib)) {
-            fprintf(stderr, "Failed to load libcrypto\n");
+            fprintf(stderr, "Failed to load libtacrypto\n");
             goto end;
         }
         if (test_type != CRYPTO_FIRST)
@@ -148,13 +148,13 @@ static int test_lib(void)
 
     case SSL_FIRST:
         if (!shlib_load(path_ssl, &ssllib)) {
-            fprintf(stderr, "Failed to load libssl\n");
+            fprintf(stderr, "Failed to load libtassl\n");
             goto end;
         }
         if (test_type != SSL_FIRST)
             break;
         if (!shlib_load(path_crypto, &cryptolib)) {
-            fprintf(stderr, "Failed to load libcrypto\n");
+            fprintf(stderr, "Failed to load libtacrypto\n");
             goto end;
         }
         break;
@@ -169,7 +169,7 @@ static int test_lib(void)
         }
         myOPENSSL_init_crypto = (OPENSSL_init_crypto_t)symbols[0].func;
         if (!myOPENSSL_init_crypto(OPENSSL_INIT_NO_ATEXIT, NULL)) {
-            fprintf(stderr, "Failed to initialise libcrypto\n");
+            fprintf(stderr, "Failed to initialise libtacrypto\n");
             goto end;
         }
     }
@@ -180,7 +180,7 @@ static int test_lib(void)
         if (!shlib_sym(ssllib, "TLS_method", &symbols[0].sym)
                 || !shlib_sym(ssllib, "SSL_CTX_new", &symbols[1].sym)
                 || !shlib_sym(ssllib, "SSL_CTX_free", &symbols[2].sym)) {
-            fprintf(stderr, "Failed to load libssl symbols\n");
+            fprintf(stderr, "Failed to load libtassl symbols\n");
             goto end;
         }
         myTLS_method = (TLS_method_t)symbols[0].func;
@@ -197,7 +197,7 @@ static int test_lib(void)
     if (!shlib_sym(cryptolib, "ERR_get_error", &symbols[0].sym)
            || !shlib_sym(cryptolib, "OpenSSL_version_num", &symbols[1].sym)
            || !shlib_sym(cryptolib, "OPENSSL_atexit", &symbols[2].sym)) {
-        fprintf(stderr, "Failed to load libcrypto symbols\n");
+        fprintf(stderr, "Failed to load libtacrypto symbols\n");
         goto end;
     }
     myERR_get_error = (ERR_get_error_t)symbols[0].func;
@@ -254,13 +254,13 @@ static int test_lib(void)
     }
 
     if (!shlib_close(cryptolib)) {
-        fprintf(stderr, "Failed to close libcrypto\n");
+        fprintf(stderr, "Failed to close libtacrypto\n");
         goto end;
     }
 
     if (test_type == CRYPTO_FIRST || test_type == SSL_FIRST) {
         if (!shlib_close(ssllib)) {
-            fprintf(stderr, "Failed to close libssl\n");
+            fprintf(stderr, "Failed to close libtassl\n");
             goto end;
         }
     }
@@ -291,8 +291,8 @@ end:
 
 /*
  * shlibloadtest should not use the normal test framework because we don't want
- * it to link against libcrypto (which the framework uses). The point of the
- * test is to check dynamic loading and unloading of libcrypto/libssl.
+ * it to link against libtacrypto (which the framework uses). The point of the
+ * test is to check dynamic loading and unloading of libtacrypto/libtassl.
  */
 int main(int argc, char *argv[])
 {
@@ -323,7 +323,7 @@ int main(int argc, char *argv[])
     path_ssl = argv[3];
     path_atexit = argv[4];
     if (path_crypto == NULL || path_ssl == NULL) {
-        fprintf(stderr, "Invalid libcrypto/libssl path\n");
+        fprintf(stderr, "Invalid libtacrypto/libtassl path\n");
         return 1;
     }
 

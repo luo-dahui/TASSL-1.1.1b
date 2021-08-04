@@ -358,7 +358,7 @@ uninstall: uninstall_docs uninstall_sw
 
 libclean:
 	"$(PERL)" -e "map { m/(.*)\.dll$$/; unlink glob """{.,apps,test,fuzz}/$$1.*"""; } @ARGV" $(SHLIBS)
-	-del /Q /F $(LIBS) libcrypto.* libssl.* ossl_static.pdb
+	-del /Q /F $(LIBS) libtacrypto.* libtassl.* ossl_static.pdb
 
 clean: libclean
 	{- join("\n\t", map { "-del /Q /F $_" } @PROGRAMS) -}

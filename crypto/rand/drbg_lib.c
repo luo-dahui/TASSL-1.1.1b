@@ -906,7 +906,7 @@ err:
 DEFINE_RUN_ONCE_STATIC(do_rand_drbg_init)
 {
     /*
-     * ensure that libcrypto is initialized, otherwise the
+     * ensure that libtacrypto is initialized, otherwise the
      * DRBG locks are not cleaned up properly
      */
     if (!OPENSSL_init_crypto(0, NULL))

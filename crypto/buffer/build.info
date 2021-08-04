@@ -1,2 +1,2 @@
-LIBS=../../libcrypto
-SOURCE[../../libcrypto]=buffer.c buf_err.c
+LIBS=../../libtacrypto
+SOURCE[../../libtacrypto]=buffer.c buf_err.c

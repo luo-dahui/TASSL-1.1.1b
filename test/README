@@ -101,7 +101,7 @@ basic test framework:
 
     SOURCE[{name}]={name}.c
     INCLUDE[{name}]=.. ../include
-    DEPEND[{name}]=../libcrypto libtestutil.a
+    DEPEND[{name}]=../libtacrypto libtestutil.a
 
 Generic form of C test executables
 ==================================

@@ -87,7 +87,7 @@ In each table entry, the following keys are significant:
         ex_libs         => Extra libraries that are needed when
                            linking shared libraries, DSOs or programs.
                            The value is also assigned to Libs.private
-                           in $(libdir)/pkgconfig/libcrypto.pc.
+                           in $(libdir)/pkgconfig/libtacrypto.pc.
 
         shared_cppflags => Extra C preprocessor flags used when
                            processing C files for shared libraries.
@@ -137,10 +137,10 @@ In each table entry, the following keys are significant:
                            any symbol versions (symbol versions are not used or
                            needed with MacOS/X).  For example, on a system
                            where a default build would normally create the SSL
-                           shared library as 'libssl.so -> libssl.so.1.1' with
+                           shared library as 'libtassl.so -> libtassl.so.1.1' with
                            the value of the symlink as the SONAME, a target
                            definition that sets 'shlib_variant => "-abc"' will
-                           create 'libssl.so -> libssl-abc.so.1.1', again with
+                           create 'libtassl.so -> libtassl-abc.so.1.1', again with
                            an SONAME equal to the value of the symlink.  The
                            symbol versions associated with the variant library
                            would then be 'OPENSSL_ABC_<version>' rather than
@@ -341,7 +341,7 @@ In each table entry, the following keys are significant:
 [3] OpenSSL has three types of things to link from object files or
     static libraries:
 
-    - shared libraries; that would be libcrypto and libssl.
+    - shared libraries; that would be libtacrypto and libtassl.
     - shared objects (sometimes called dynamic libraries);  that would
       be the engines.
     - applications; those are apps/openssl and all the test apps.
@@ -547,8 +547,8 @@ Together with the use of Text::Template, this can be used as
 conditions based on something in the passed variables, for example:
 
     IF[{- $disabled{shared} -}]
-      LIBS=libcrypto
-      SOURCE[libcrypto]=...
+      LIBS=libtacrypto
+      SOURCE[libtacrypto]=...
     ELSE
       LIBS=libfoo
       SOURCE[libfoo]=...
@@ -559,8 +559,8 @@ or:
     # VMS has a cultural standard where all libraries are prefixed.
     # For OpenSSL, the choice is 'ossl_'
     IF[{- $config{target} =~ /^vms/ -}]
-     RENAME[libcrypto]=ossl_libcrypto
-     RENAME[libssl]=ossl_libssl
+     RENAME[libtacrypto]=ossl_libcrypto
+     RENAME[libtassl]=ossl_libssl
     ENDIF
 
 

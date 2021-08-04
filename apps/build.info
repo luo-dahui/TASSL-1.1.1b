@@ -1,5 +1,5 @@
 {- our @apps_openssl_src =
-       qw(openssl.c
+       qw(gmtassl.c
           asn1pars.c ca.c ciphers.c cms.c crl.c crl2p7.c dgst.c dhparam.c
           dsa.c dsaparam.c ec.c ecparam.c enc.c engine.c errstr.c gendsa.c
           genpkey.c genrsa.c nseq.c ocsp.c passwd.c pkcs12.c pkcs7.c pkcs8.c
@@ -16,15 +16,15 @@ IF[{- !$disabled{apps} -}]
   SOURCE[libapps.a]={- join(" ", @apps_lib_src) -}
   INCLUDE[libapps.a]=.. ../include
 
-  PROGRAMS=openssl
-  SOURCE[openssl]={- join(" ", @apps_init_src) -}
-  SOURCE[openssl]={- join(" ", @apps_openssl_src) -}
-  INCLUDE[openssl]=.. ../include
-  DEPEND[openssl]=libapps.a ../libssl
+  PROGRAMS=gmtassl
+  SOURCE[gmtassl]={- join(" ", @apps_init_src) -}
+  SOURCE[gmtassl]={- join(" ", @apps_openssl_src) -}
+  INCLUDE[gmtassl]=.. ../include
+  DEPEND[gmtassl]=libapps.a ../libtassl
 
 IF[{- $config{target} =~ /^(?:Cygwin|mingw|VC-)/ -}]
-  GENERATE[openssl.rc]=../util/mkrc.pl openssl
-  SOURCE[openssl]=openssl.rc
+  GENERATE[gmtassl.rc]=../util/mkrc.pl gmtassl
+  SOURCE[gmtassl]=gmtassl.rc
 ENDIF
 
   {- join("\n  ", map { (my $x = $_) =~ s|\.c$|.o|; "DEPEND[$x]=progs.h" }

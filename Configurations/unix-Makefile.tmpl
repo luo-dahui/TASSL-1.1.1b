@@ -16,8 +16,8 @@
 
      sub windowsdll { $config{target} =~ /^(?:Cygwin|mingw)/ }
 
-     # Shared AIX support is special. We put libcrypto[64].so.ver into
-     # libcrypto.a and use libcrypto_a.a as static one.
+     # Shared AIX support is special. We put libtacrypto[64].so.ver into
+     # libtacrypto.a and use libcrypto_a.a as static one.
      sub sharedaix  { !$disabled{shared} && $config{target} =~ /^aix/ }
 
      our $sover_dirname = $config{shlib_version_number};
@@ -125,7 +125,7 @@ MISC_SCRIPTS=$(BLDDIR)/apps/CA.pl $(BLDDIR)/apps/tsget.pl:tsget
 {- output_on() if $disabled{apps}; "" -}
 
 APPS_OPENSSL={- use File::Spec::Functions;
-                catfile("apps","openssl") -}
+                catfile("apps","gmtassl") -}
 
 # DESTDIR is for package builders so that they can configure for, say,
 # /usr/ and yet have everything installed to /tmp/somedir/usr/.
@@ -225,7 +225,8 @@ RMDIR= rmdir
 TAR= {- $target{TAR} || "tar" -}
 TARFLAGS= {- $target{TARFLAGS} -}
 
-BASENAME=       openssl
+# BASENAME=       openssl
+BASENAME=       gmtassl
 NAME=           $(BASENAME)-$(VERSION)
 # Relative to $(SRCDIR)
 TARFILE=        ../$(NAME).tar
@@ -348,7 +349,7 @@ LANG=C
 {- dependmagic('build_programs'); -}: build_programs_nodep
 
 build_generated: $(GENERATED_MANDATORY)
-build_libs_nodep: libcrypto.pc libssl.pc openssl.pc
+build_libs_nodep: libtacrypto.pc libtassl.pc openssl.pc
 build_engines_nodep: $(ENGINES)
 build_programs_nodep: $(PROGRAMS) $(SCRIPTS)
 
@@ -419,7 +420,7 @@ clean: libclean
 	$(RM) core
 	$(RM) tags TAGS doc-nits
 	$(RM) -r test/test-runs
-	$(RM) openssl.pc libcrypto.pc libssl.pc
+	$(RM) openssl.pc libtacrypto.pc libtassl.pc
 	-$(RM) `find . -name .git -prune -o -type l -print`
 	$(RM) $(TARFILE)
 
@@ -597,12 +598,12 @@ install_dev: install_runtime_libs
 	done
 	@ : {- output_on() if $disabled{shared}; "" -}
 	@$(PERL) $(SRCDIR)/util/mkdir-p.pl $(DESTDIR)$(libdir)/pkgconfig
-	@$(ECHO) "install libcrypto.pc -> $(DESTDIR)$(libdir)/pkgconfig/libcrypto.pc"
-	@cp libcrypto.pc $(DESTDIR)$(libdir)/pkgconfig
-	@chmod 644 $(DESTDIR)$(libdir)/pkgconfig/libcrypto.pc
-	@$(ECHO) "install libssl.pc -> $(DESTDIR)$(libdir)/pkgconfig/libssl.pc"
-	@cp libssl.pc $(DESTDIR)$(libdir)/pkgconfig
-	@chmod 644 $(DESTDIR)$(libdir)/pkgconfig/libssl.pc
+	@$(ECHO) "install libtacrypto.pc -> $(DESTDIR)$(libdir)/pkgconfig/libtacrypto.pc"
+	@cp libtacrypto.pc $(DESTDIR)$(libdir)/pkgconfig
+	@chmod 644 $(DESTDIR)$(libdir)/pkgconfig/libtacrypto.pc
+	@$(ECHO) "install libtassl.pc -> $(DESTDIR)$(libdir)/pkgconfig/libtassl.pc"
+	@cp libtassl.pc $(DESTDIR)$(libdir)/pkgconfig
+	@chmod 644 $(DESTDIR)$(libdir)/pkgconfig/libtassl.pc
 	@$(ECHO) "install openssl.pc -> $(DESTDIR)$(libdir)/pkgconfig/openssl.pc"
 	@cp openssl.pc $(DESTDIR)$(libdir)/pkgconfig
 	@chmod 644 $(DESTDIR)$(libdir)/pkgconfig/openssl.pc
@@ -645,8 +646,8 @@ uninstall_dev: uninstall_runtime_libs
 		: {- output_on() unless windowsdll(); "" -}; \
 	done
 	@ : {- output_on() if $disabled{shared}; "" -}
-	$(RM) $(DESTDIR)$(libdir)/pkgconfig/libcrypto.pc
-	$(RM) $(DESTDIR)$(libdir)/pkgconfig/libssl.pc
+	$(RM) $(DESTDIR)$(libdir)/pkgconfig/libtacrypto.pc
+	$(RM) $(DESTDIR)$(libdir)/pkgconfig/libtassl.pc
 	$(RM) $(DESTDIR)$(libdir)/pkgconfig/openssl.pc
 	-$(RMDIR) $(DESTDIR)$(libdir)/pkgconfig
 	-$(RMDIR) $(DESTDIR)$(libdir)
@@ -891,8 +892,8 @@ FORCE:
 
 # Building targets ###################################################
 
-libcrypto.pc libssl.pc openssl.pc: configdata.pm $(LIBS) {- join(" ",map { shlib_simple($_) } @{$unified_info{libraries}}) -}
-libcrypto.pc:
+libtacrypto.pc libtassl.pc openssl.pc: configdata.pm $(LIBS) {- join(" ",map { shlib_simple($_) } @{$unified_info{libraries}}) -}
+libtacrypto.pc:
 	@ ( echo 'prefix=$(INSTALLTOP)'; \
 	    echo 'exec_prefix=$${prefix}'; \
 	    if [ -n "$(LIBDIR)" ]; then \
@@ -903,14 +904,14 @@ libcrypto.pc:
 	    echo 'includedir=$${prefix}/include'; \
 	    echo 'enginesdir=$${libdir}/engines-{- $sover_dirname -}'; \
 	    echo ''; \
-	    echo 'Name: OpenSSL-libcrypto'; \
+	    echo 'Name: OpenSSL-libtacrypto'; \
 	    echo 'Description: OpenSSL cryptography library'; \
 	    echo 'Version: '$(VERSION); \
 	    echo 'Libs: -L$${libdir} -lcrypto'; \
 	    echo 'Libs.private: $(LIB_EX_LIBS)'; \
-	    echo 'Cflags: -I$${includedir}' ) > libcrypto.pc
+	    echo 'Cflags: -I$${includedir}' ) > libtacrypto.pc
 
-libssl.pc:
+libtassl.pc:
 	@ ( echo 'prefix=$(INSTALLTOP)'; \
 	    echo 'exec_prefix=$${prefix}'; \
 	    if [ -n "$(LIBDIR)" ]; then \
@@ -920,12 +921,12 @@ libssl.pc:
 	    fi; \
 	    echo 'includedir=$${prefix}/include'; \
 	    echo ''; \
-	    echo 'Name: OpenSSL-libssl'; \
+	    echo 'Name: OpenSSL-libtassl'; \
 	    echo 'Description: Secure Sockets Layer and cryptography libraries'; \
 	    echo 'Version: '$(VERSION); \
-	    echo 'Requires.private: libcrypto'; \
+	    echo 'Requires.private: libtacrypto'; \
 	    echo 'Libs: -L$${libdir} -lssl'; \
-	    echo 'Cflags: -I$${includedir}' ) > libssl.pc
+	    echo 'Cflags: -I$${includedir}' ) > libtassl.pc
 
 openssl.pc:
 	@ ( echo 'prefix=$(INSTALLTOP)'; \
@@ -940,7 +941,7 @@ openssl.pc:
 	    echo 'Name: OpenSSL'; \
 	    echo 'Description: Secure Sockets Layer and cryptography libraries and tools'; \
 	    echo 'Version: '$(VERSION); \
-	    echo 'Requires: libssl libcrypto' ) > openssl.pc
+	    echo 'Requires: libtassl libtacrypto' ) > openssl.pc
 
 configdata.pm: $(SRCDIR)/Configure $(SRCDIR)/config {- join(" ", @{$config{build_file_templates}}, @{$config{build_infos}}, @{$config{conf_files}}) -}
 	@echo "Detected changed: $?"
